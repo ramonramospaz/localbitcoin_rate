@@ -14,16 +14,16 @@ import (
 
 //CLI is the client interface
 type cliParm struct {
-	Search struct {
+	Currencies struct{} `cmd help:"Show the list of currencies permitted."`
+	Example    struct{} `cmd help:"Show some examples of how to fill the params."`
+	Search     struct {
 		CoinBuy  string `check:"len=3,regexp=[A-Z]"  required short:"b" help:"Currency code for Buying. (REQUIRED)" `
 		BankBuy  string `check:"max=10,regexp=[a-zA-Z]*" optional short:"1" help:"Bank name for Buying. " `
 		CoinSell string `check:"len=3,regexp=[A-Z]" required short:"s" help:"Currency code for Selling. (REQUIRED)" `
 		BankSell string `check:"max=10,regexp=[a-zA-Z]*" optional short:"2" help:"Bank name for Selling." `
 		Amount   string `required short:"a" help:"Amount to exchange. (REQUIRED)"`
 	} `cmd help:"Search the rate of a specific exchange."`
-	Currencies struct{} `cmd help:"Show the list of currencies permitted."`
-	Version    struct{} `cmd help:"Version of the app."`
-	Example    struct{} `cmd help:"Show some examples of how to fill the params."`
+	Version struct{} `cmd help:"Version of the app."`
 }
 
 // Cli function that check the param that need the cli interface
