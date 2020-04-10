@@ -28,6 +28,13 @@ func getListCoins() {
 	listCoins.Ready = true
 }
 
+//ShowListCoins show the list of all currency that localbitcoin can work with.
+func ShowListCoins() entity.LocalbitcoinsCurrencieResponse {
+	fmt.Println("Searching the list of currency in the web page localbitcoin. This is going to take some time....")
+	getListCoins()
+	return listCoins
+}
+
 func getLocalbitcoinResponse(url string) (r entity.LocalbitcoinsResponse, e error) {
 	// Create HTTP client with timeout
 	client := &http.Client{

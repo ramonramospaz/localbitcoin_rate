@@ -21,8 +21,9 @@ type cliParm struct {
 		BankSell string `check:"max=10,regexp=[a-zA-Z]*" optional short:"2" help:"Bank name for Selling." `
 		Amount   string `required short:"a" help:"Amount to exchange. (REQUIRED)"`
 	} `cmd help:"Search the rate of a specific exchange."`
-	Version struct{} `cmd help:"Version of the app."`
-	Example struct{} `cmd help:"Show some examples of how to fill the params."`
+	Currencies struct{} `cmd help:"Show the list of currencies permitted."`
+	Version    struct{} `cmd help:"Version of the app."`
+	Example    struct{} `cmd help:"Show some examples of how to fill the params."`
 }
 
 // Cli function that check the param that need the cli interface
@@ -38,10 +39,12 @@ func Cli() {
 		}))
 
 	switch ctx.Command() {
-	case "search":
-		getLocalbitcoinRate(c)
+	case "currencies":
+		getListCurrencies()
 	case "example":
 		getExample()
+	case "search":
+		getLocalbitcoinRate(c)
 	case "version":
 		getVersion()
 	default:
@@ -75,4 +78,10 @@ func getLocalbitcoinRate(c cliParm) (errs error) {
 	}
 	return
 
+}
+
+func getListCurrencies() {
+	listCoins := conexion.ShowListCoins()
+	output, _ := json.MarshalIndent(&listCoins.Data.Currencies, "", "\t\t")
+	fmt.Printf("%v\n", string(output))
 }
