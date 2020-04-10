@@ -2,7 +2,8 @@ package entity
 
 // LocalbitcoinsCurrencieResponse is the main struct of response from localbitcoin api
 type LocalbitcoinsCurrencieResponse struct {
-	Data CurrencieData `json:"data"`
+	Data  CurrencieData `json:"data"`
+	Ready bool
 }
 
 // CurrencieData ...
