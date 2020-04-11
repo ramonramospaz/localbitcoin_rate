@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-const version = "0.0.3"
+const version = "0.0.5"
 
 func getVersion() {
 	fmt.Printf("Cli app version %v\n", version)

@@ -146,9 +146,10 @@ func TestSearchFunctionByAmountOfBTC(t *testing.T) {
 	}
 
 	const adIDtest1 = 1058164
+	const errorText = "The item returned in the search is not the one that need the test. Need %v, returned %v"
 
 	if response.AdInfo.AdID != adIDtest1 {
-		t.Errorf("The item returned in the search is not the one that need the test. Need %v, returned %v", adIDtest1, response.AdInfo.AdID)
+		t.Errorf(errorText, adIDtest1, response.AdInfo.AdID)
 	}
 
 	//Second search
@@ -160,6 +161,6 @@ func TestSearchFunctionByAmountOfBTC(t *testing.T) {
 	const adIDtest2 = 1075144
 
 	if response.AdInfo.AdID != adIDtest2 {
-		t.Errorf("The item returned in the search is not the one that need the test. Need %v, returned %v", adIDtest2, response.AdInfo.AdID)
+		t.Errorf(errorText, adIDtest2, response.AdInfo.AdID)
 	}
 }

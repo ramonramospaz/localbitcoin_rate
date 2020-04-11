@@ -35,7 +35,7 @@ func ShowListCoins() entity.LocalbitcoinsCurrencieResponse {
 	return listCoins
 }
 
-func getLocalbitcoinResponse(url string) (r entity.LocalbitcoinsResponse, e error) {
+func getHttpResponse(url string) (dataInBytes []byte, e error) {
 	// Create HTTP client with timeout
 	client := &http.Client{
 		Timeout: 30 * time.Second,
@@ -48,34 +48,48 @@ func getLocalbitcoinResponse(url string) (r entity.LocalbitcoinsResponse, e erro
 	}
 	defer response.Body.Close()
 
-	dataInBytes, e := ioutil.ReadAll(response.Body)
+	dataInBytes, e = ioutil.ReadAll(response.Body)
 
-	e = json.Unmarshal(dataInBytes, &r)
+	return
+}
+
+func getLocalbitcoinResponse(url string) (r entity.LocalbitcoinsResponse, e error) {
+	// Create HTTP client with timeout
+	//client := &http.Client{
+	//	Timeout: 30 * time.Second,
+	//}
+
+	//Makr HTTP GET request
+	//response, e := client.Get(url)
+	//if e != nil {
+	//	return
+	//}
+	//defer response.Body.Close()
+
+	var localbitcoinsResponse entity.LocalbitcoinsResponse
+
+	dataInBytes, e := getHttpResponse(url)
+
+	e = json.Unmarshal(dataInBytes, &localbitcoinsResponse)
 	if e != nil {
 		return
 	}
+	r = localbitcoinsResponse
+
 	return
 }
 
 func getLocalbitcoinCurrencieResponse(url string) (r entity.LocalbitcoinsCurrencieResponse, e error) {
-	// Create HTTP client with timeout
-	client := &http.Client{
-		Timeout: 30 * time.Second,
-	}
+	var localbitcoinsCurrencieResponse entity.LocalbitcoinsCurrencieResponse
 
-	//Makr HTTP GET request
-	response, e := client.Get(url)
+	dataInBytes, e := getHttpResponse(url)
+
+	e = json.Unmarshal(dataInBytes, &localbitcoinsCurrencieResponse)
 	if e != nil {
 		return
 	}
-	defer response.Body.Close()
+	r = localbitcoinsCurrencieResponse
 
-	dataInBytes, e := ioutil.ReadAll(response.Body)
-
-	e = json.Unmarshal(dataInBytes, &r)
-	if e != nil {
-		return
-	}
 	return
 }
 
@@ -96,20 +110,8 @@ func GetLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankN
 	return getLocalbitcoinRate(coinIn, bankNameIn, coinOut, bankNameOut, amount, getLocalbitcoinResponse)
 }
 
-func getLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankNameOut string, amount float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (response entity.LocalbitcoinRateInformation, err error) {
-
-	if amount <= 0 {
-		err = errors.New("The amount cant be 0 or negative")
-		return
-	}
-
-	if errIn, errOut := checkLocalbitcoinCoins(coinIn), checkLocalbitcoinCoins(coinOut); errIn != nil || errOut != nil {
-		err = errors.New("The Currency dont exist")
-		return
-	}
-
+func getLocalbitcoinBuyAd(coinIn string, bankNameIn string, amount float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (buyAdvertisement entity.Advertisement, err error) {
 	completeURLBuy := fmt.Sprintf(urlBuy, coinIn)
-	completeURLSell := fmt.Sprintf(urlSell, coinOut)
 	localbitcoinsResponseBuy, err := getResponse(completeURLBuy)
 	if err != nil {
 		err = errors.New("The buy Ads cant be loaded, please check your internet conection")
@@ -117,7 +119,6 @@ func getLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankN
 	}
 
 	findBuyer := false
-	var buyAdvertisement entity.Advertisement
 	for findBuyer == false {
 		buyAdvertisement, err = localbitcoinsResponseBuy.Data.SearchByAmountAndBankFirstMatch(amount, bankNameIn)
 		if err == nil {
@@ -132,38 +133,78 @@ func getLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankN
 		}
 	}
 
-	if findBuyer == true {
-		buyTempPrice, errFloat := strconv.ParseFloat(buyAdvertisement.AdInfo.TempPrice, 64)
+	if findBuyer == false {
+		err = errors.New("The buy Ads cant be Found")
+		return
+	}
 
-		if errFloat == nil {
-			BTC := amount / buyTempPrice
-			localbitcoinsResponseSell, errURL := getResponse(completeURLSell)
-			if errURL == nil {
-				findSeller := false
-				var sellAdvertisement entity.Advertisement
-				for findSeller == false {
-					sellAdvertisement, err = localbitcoinsResponseSell.Data.SearchByBTCAndBankFirstMatch(BTC, bankNameOut)
-					if err == nil {
-						findSeller = true
-					}
+	return
+}
 
-					if (findSeller == false && localbitcoinsResponseSell.Pages.Next == "") || (findSeller == true) {
-						break
-					} else {
-						localbitcoinsResponseSell, _ = getResponse(localbitcoinsResponseSell.Pages.Next)
-					}
-				}
+func getLocalbitcoinSellAd(coinOut string, bankNameOut string, BTC float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (sellAdvertisement entity.Advertisement, err error) {
+	completeURLSell := fmt.Sprintf(urlSell, coinOut)
+	localbitcoinsResponseSell, errURL := getResponse(completeURLSell)
+	if errURL != nil {
+		err = errors.New("The Sell Ads cant be loaded, please check your internet conection")
+		return
+	}
 
-				if findBuyer == true && findSeller == true {
-					response, err = entity.GetLocalbitcoinResume(amount, buyAdvertisement, sellAdvertisement)
-				} else {
-					err = errors.New("Could not find a match")
-				}
-			}
-
+	findSeller := false
+	for findSeller == false {
+		sellAdvertisement, err = localbitcoinsResponseSell.Data.SearchByBTCAndBankFirstMatch(BTC, bankNameOut)
+		if err == nil {
+			findSeller = true
 		}
 
+		if (findSeller == false && localbitcoinsResponseSell.Pages.Next == "") || (findSeller == true) {
+			break
+		} else {
+			localbitcoinsResponseSell, _ = getResponse(localbitcoinsResponseSell.Pages.Next)
+		}
 	}
+
+	if findSeller == false {
+		err = errors.New("The Sell Ads cant be Found")
+		return
+	}
+
+	return
+}
+
+func getLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankNameOut string, amount float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (response entity.LocalbitcoinRateInformation, err error) {
+
+	if amount <= 0 {
+		err = errors.New("The amount cant be 0 or negative")
+		return
+	}
+
+	if errIn, errOut := checkLocalbitcoinCoins(coinIn), checkLocalbitcoinCoins(coinOut); errIn != nil || errOut != nil {
+		err = errors.New("The Currency dont exist")
+		return
+	}
+
+	buyAdvertisement, err := getLocalbitcoinBuyAd(coinIn, bankNameIn, amount, getResponse)
+
+	if err != nil {
+		return
+	}
+
+	buyTempPrice, errFloat := strconv.ParseFloat(buyAdvertisement.AdInfo.TempPrice, 64)
+
+	if errFloat != nil {
+		err = errors.New("The prince of the ads cant be parse, invalid amount")
+		return
+	}
+
+	BTC := amount / buyTempPrice
+
+	sellAdvertisement, err := getLocalbitcoinSellAd(coinOut, bankNameOut, BTC, getResponse)
+
+	if err != nil {
+		return
+	}
+
+	response, err = entity.GetLocalbitcoinResume(amount, buyAdvertisement, sellAdvertisement)
 
 	return
 
