@@ -93,6 +93,7 @@ func TestLocalbitcoinsResponse(t *testing.T) {
 
 func TestSearchFunctionByAmountOfMoney(t *testing.T) {
 
+	const errorText = "The item returned in the search is not the one that need the test. Need %v, returned %v"
 	localbitcoinsResponse, err := getJSONFromFile()
 
 	if err != nil {
@@ -108,7 +109,7 @@ func TestSearchFunctionByAmountOfMoney(t *testing.T) {
 	const adIDtest1 = 1058164
 
 	if response.AdInfo.AdID != adIDtest1 {
-		t.Errorf("The item returned in the search is not the one that need the test. Need %v, returned %v", adIDtest1, response.AdInfo.AdID)
+		t.Errorf(errorText, adIDtest1, response.AdInfo.AdID)
 	}
 
 	//Second search
@@ -120,7 +121,7 @@ func TestSearchFunctionByAmountOfMoney(t *testing.T) {
 	const adIDtest2 = 1075144
 
 	if response.AdInfo.AdID != adIDtest2 {
-		t.Errorf("The item returned in the search is not the one that need the test. Need %v, returned %v", adIDtest2, response.AdInfo.AdID)
+		t.Errorf(errorText, adIDtest2, response.AdInfo.AdID)
 	}
 
 	//Last search

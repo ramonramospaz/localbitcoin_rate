@@ -1,1 +1,38 @@
-#README
+# LOCALBITCOIN RATE
+
+Localbitcoin rate is a command-line app that searches the best rate from a specific amount from one currency to another.
+
+## Help
+
+Using the flag help shows all the commands that can do the app.
+
+eg.
+```bash
+$localbitoin_rate --help
+
+Usage: localbitoin_rate <command>
+
+A shell-like app that search for rates in localbitcoin
+
+Flags:
+  --help    Show context-sensitive help.
+
+Commands:
+  currencies    Show the list of currencies permitted.
+  example       Show some examples of how to fill the params.
+  search        Search the rate of a specific exchange.
+  version       Version of the app.
+
+Run "localbitoin_rate <command> --help" for more information on a command
+```
+
+## Example 1:
+```bash
+localbitcoin_rate search -b PAB -s VES -a 100
+```
+This example search the rate from PAB (Panama Currency) to VES (Venezuelan Currency) from the amount 100$
+## Example 2:
+```bash
+localbitcoin_rate search -b PAB -1 Banesco -s VES -2 BOD -a 100
+```
+This example search the rate from PAB (Panama Currency) of the Bank Banesco to VES (Venezuelan Currency) of the Bank BOD from the amount 100$
