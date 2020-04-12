@@ -56,7 +56,7 @@ func Cli() {
 func getLocalbitcoinRate(c cliParm) (errs error) {
 
 	if errs = validator.WithTag("check").Validate(c); errs != nil {
-		fmt.Printf("There are some errors in the input\n")
+		fmt.Printf("There are some errors in the input %v\n", errs)
 		return
 	}
 
