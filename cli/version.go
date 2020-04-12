@@ -3,10 +3,12 @@ package cli
 import (
 	"fmt"
 	"os"
+	"runtime"
 	"strings"
 )
 
-const version = "0.0.5"
+// Change the version in the makefile
+var version = "undefined"
 
 func getVersion() {
 	fmt.Printf("Cli app version %v\n", version)
@@ -14,7 +16,11 @@ func getVersion() {
 
 func getExample() {
 	appPath, _ := os.Executable()
-	appPathFolders := strings.Split(appPath, "/")
+	pathSeparator := "/"
+	if runtime.GOOS == "windows" {
+		pathSeparator = "\\"
+	}
+	appPathFolders := strings.Split(appPath, pathSeparator)
 	appName := appPathFolders[len(appPathFolders)-1]
 	fmt.Printf("Example 1:\n%v search -b PAB -s VES -a 100\nThis example search the rate from ", appName)
 	fmt.Printf("PAB (Panama Currency) to VES (Venezuelan Currency) from the amount 100$\n")

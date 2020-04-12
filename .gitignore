@@ -4,3 +4,4 @@ run-sonar-scaner.sh
 .scannerwork/sonar-go-to-slang-linux-amd64
 .scannerwork/report-task.txt
 localbitcoin_rate
+build
