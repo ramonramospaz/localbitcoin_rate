@@ -56,6 +56,16 @@ func TestGetLocalbitcoinResponse(t *testing.T) {
 	//t.Log(string(output))
 }
 
+func BenchmarkGetLocalbitcoinResponse(b *testing.B) {
+	url := "https://localbitcoins.com/es/buy-bitcoins-online/pab/.json"
+	_, err := getLocalbitcoinResponse(url)
+
+	if err != nil {
+		b.Error(err)
+	}
+
+}
+
 func TestGetLocalbitcoinCurrencieResponse(t *testing.T) {
 	response, err := getLocalbitcoinCurrencieResponse(urlCoins)
 

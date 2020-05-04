@@ -1,9 +1,11 @@
 package conexion
 
 import (
+	"compress/gzip"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"localbitcoin_rate/entity"
 	"net/http"
@@ -41,30 +43,41 @@ func getHttpResponse(url string) (dataInBytes []byte, e error) {
 		Timeout: 30 * time.Second,
 	}
 
+	//Create request
+	request, e := http.NewRequest("GET", url, nil)
+
+	if e != nil {
+		return
+	}
+	//Add the header for read compresion
+
+	request.Header.Add("Accept-Encoding", "gzip")
+
 	//Makr HTTP GET request
-	response, e := client.Get(url)
+	response, e := client.Do(request)
 	if e != nil {
 		return
 	}
 	defer response.Body.Close()
 
-	dataInBytes, e = ioutil.ReadAll(response.Body)
+	//Check if the server send compressd data
+	var reader io.ReadCloser
+	switch response.Header.Get("Content-Encoding") {
+	case "gzip":
+		reader, e = gzip.NewReader(response.Body)
+		if e != nil {
+			return
+		}
+
+		dataInBytes, e = ioutil.ReadAll(reader)
+	default:
+		dataInBytes, e = ioutil.ReadAll(response.Body)
+	}
 
 	return
 }
 
 func getLocalbitcoinResponse(url string) (r entity.LocalbitcoinsResponse, e error) {
-	// Create HTTP client with timeout
-	//client := &http.Client{
-	//	Timeout: 30 * time.Second,
-	//}
-
-	//Makr HTTP GET request
-	//response, e := client.Get(url)
-	//if e != nil {
-	//	return
-	//}
-	//defer response.Body.Close()
 
 	var localbitcoinsResponse entity.LocalbitcoinsResponse
 
