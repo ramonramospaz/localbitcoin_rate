@@ -3,7 +3,10 @@ package cli
 import (
 	"encoding/json"
 	"localbitcoin_rate/conexion"
+	"localbitcoin_rate/entity"
 	"strconv"
+
+	"golang.org/x/text/message"
 
 	"gopkg.in/validator.v2"
 
@@ -66,8 +69,7 @@ func getLocalbitcoinRate(c cliParm) (errs error) {
 			c.Search.CoinBuy, c.Search.CoinSell, amount)
 		response, err := conexion.GetLocalbitcoinRate(c.Search.CoinBuy, c.Search.BankBuy, c.Search.CoinSell, c.Search.BankSell, amount)
 		if err == nil {
-			output, _ := json.MarshalIndent(&response, "", "\t\t")
-			fmt.Printf("%v\n", string(output))
+			showInformation(response)
 		} else {
 			fmt.Printf("%v\n", err)
 			errs = err
@@ -78,6 +80,30 @@ func getLocalbitcoinRate(c cliParm) (errs error) {
 	}
 	return
 
+}
+
+func showInformation(info entity.LocalbitcoinRateInformation) {
+
+	p := message.NewPrinter(message.MatchLanguage("en"))
+	fmt.Println("")
+	fmt.Printf("%v    %v\n", greenText("CurrencyBuy:"), info.CurrencyBuy)
+	fmt.Printf("%v    %v\n", greenText("BankNameBuy:"), info.BankNameBuy)
+	p.Printf("%v      %.2f\n", greenText("AmountBuy:"), info.AmountBuy)
+	fmt.Printf("%v  %v\n", greenText("PublicViewBuy:"), blueText(info.PublicViewBuy))
+	fmt.Printf("%v   %v\n", greenText("CurrencySell:"), info.CurrencySell)
+	fmt.Printf("%v   %v\n", greenText("BankNameSell:"), info.BankNameSell)
+	p.Printf("%v     %.2f\n", greenText("AmountSell:"), info.AmountSell)
+	fmt.Printf("%v %v\n", greenText("PublicViewSell:"), blueText(info.PublicViewSell))
+	p.Printf("%v           %.2f\n", greenText("Rate:"), info.Rate)
+	fmt.Println("")
+}
+
+func greenText(text string) string {
+	return fmt.Sprintf("\033[1;32m%v\033[0m", text)
+}
+
+func blueText(text string) string {
+	return fmt.Sprintf("\033[1;34m%v\033[0m", text)
 }
 
 func getListCurrencies() {
