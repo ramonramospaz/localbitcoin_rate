@@ -1,6 +1,7 @@
 package entity
 
 import (
+	"fmt"
 	"strconv"
 )
 
@@ -66,7 +67,7 @@ func GetLocalbitcoinResume(amount float64, buy Advertisement, sell Advertisement
 	r.CurrencyBuy = buy.AdInfo.Currency
 	r.BankNameBuy = buy.AdInfo.BankName
 	r.AmountBuy = amount
-	r.PublicViewBuy = buy.Actions.PublicView
+	r.PublicViewBuy = buy.Actions.PublicView + "?amount=" + fmt.Sprintf("%.2f", amount)
 	r.CurrencySell = sell.AdInfo.Currency
 	r.BankNameSell = sell.AdInfo.BankName
 	sellTempPrice, e := strconv.ParseFloat(sell.AdInfo.TempPrice, 64)
@@ -78,7 +79,7 @@ func GetLocalbitcoinResume(amount float64, buy Advertisement, sell Advertisement
 		return
 	}
 	r.AmountSell = sellTempPrice * (amount / buyTempPrice)
-	r.PublicViewSell = sell.Actions.PublicView
+	r.PublicViewSell = sell.Actions.PublicView + "?amount=" + fmt.Sprintf("%.2f", r.AmountSell)
 	r.Rate = r.AmountSell / r.AmountBuy
 	return
 }

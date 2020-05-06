@@ -6,6 +6,7 @@ import (
 	"localbitcoin_rate/entity"
 	"strconv"
 
+	"github.com/fatih/color"
 	"golang.org/x/text/message"
 
 	"gopkg.in/validator.v2"
@@ -59,7 +60,7 @@ func Cli() {
 func getLocalbitcoinRate(c cliParm) (errs error) {
 
 	if errs = validator.WithTag("check").Validate(c); errs != nil {
-		fmt.Printf("There are some errors in the input %v\n", errs)
+		color.Red("ERROR - There are some errors in the input %v\n", errs)
 		return
 	}
 
@@ -71,11 +72,11 @@ func getLocalbitcoinRate(c cliParm) (errs error) {
 		if err == nil {
 			showInformation(response)
 		} else {
-			fmt.Printf("%v\n", err)
+			color.Red("ERROR - %v\n", err)
 			errs = err
 		}
 	} else {
-		fmt.Println("The parameters CoinBuy, CoinShell and Amount are obligatories, use --help param")
+		color.Red("ERROR - The parameters CoinBuy, CoinShell and Amount are obligatories, use --help param")
 		errs = errFloat
 	}
 	return
@@ -85,25 +86,21 @@ func getLocalbitcoinRate(c cliParm) (errs error) {
 func showInformation(info entity.LocalbitcoinRateInformation) {
 
 	p := message.NewPrinter(message.MatchLanguage("en"))
+	greenText := color.New(color.FgGreen).SprintFunc()
+	blueText := color.New(color.FgBlue).SprintFunc()
+	redText := color.New(color.FgRed).SprintFunc()
+	yellowText := color.New(color.FgYellow).SprintFunc()
 	fmt.Println("")
 	fmt.Printf("%v    %v\n", greenText("CurrencyBuy:"), info.CurrencyBuy)
 	fmt.Printf("%v    %v\n", greenText("BankNameBuy:"), info.BankNameBuy)
-	p.Printf("%v      %.2f\n", greenText("AmountBuy:"), info.AmountBuy)
+	p.Printf("%v      %v\n", greenText("AmountBuy:"), yellowText(p.Sprintf("%.2f", info.AmountBuy)))
 	fmt.Printf("%v  %v\n", greenText("PublicViewBuy:"), blueText(info.PublicViewBuy))
 	fmt.Printf("%v   %v\n", greenText("CurrencySell:"), info.CurrencySell)
 	fmt.Printf("%v   %v\n", greenText("BankNameSell:"), info.BankNameSell)
-	p.Printf("%v     %.2f\n", greenText("AmountSell:"), info.AmountSell)
+	p.Printf("%v     %v\n", greenText("AmountSell:"), yellowText(p.Sprintf("%.2f", info.AmountSell)))
 	fmt.Printf("%v %v\n", greenText("PublicViewSell:"), blueText(info.PublicViewSell))
-	p.Printf("%v           %.2f\n", greenText("Rate:"), info.Rate)
+	p.Printf("%v           %v\n", greenText("Rate:"), redText(p.Sprintf("%.2f", info.Rate)))
 	fmt.Println("")
-}
-
-func greenText(text string) string {
-	return fmt.Sprintf("\033[1;32m%v\033[0m", text)
-}
-
-func blueText(text string) string {
-	return fmt.Sprintf("\033[1;34m%v\033[0m", text)
 }
 
 func getListCurrencies() {
