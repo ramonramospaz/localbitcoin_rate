@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"localbitcoin_rate/conexion"
 	"localbitcoin_rate/entity"
+	"runtime"
 	"strconv"
 
 	"github.com/fatih/color"
@@ -58,6 +59,10 @@ func Cli() {
 }
 
 func getLocalbitcoinRate(c cliParm) (errs error) {
+
+	if runtime.GOOS == "windows" {
+		color.NoColor = true
+	}
 
 	if errs = validator.WithTag("check").Validate(c); errs != nil {
 		color.Red("ERROR - There are some errors in the input %v\n", errs)
