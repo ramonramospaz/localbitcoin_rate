@@ -28,7 +28,7 @@ type MainData struct {
 func (m *MainData) SearchByAmountAndBankFirstMatch(amount float64, bankName string) (r Advertisement, e error) {
 	for _, ad := range m.Adlist {
 		minAmount, _ := strconv.ParseFloat(ad.AdInfo.MinAmount, 64)
-		maxAmount, _ := strconv.ParseFloat(ad.AdInfo.MaxAmount, 64)
+		maxAmount, _ := strconv.ParseFloat(ad.AdInfo.MaxAmountAvailable, 64)
 
 		if amount >= minAmount && amount <= maxAmount {
 
@@ -48,7 +48,7 @@ func (m *MainData) SearchByAmountAndBankFirstMatch(amount float64, bankName stri
 func (m *MainData) SearchByBTCAndBankFirstMatch(btcAmount float64, bankName string) (r Advertisement, e error) {
 	for _, ad := range m.Adlist {
 		minAmount, _ := strconv.ParseFloat(ad.AdInfo.MinAmount, 64)
-		maxAmount, _ := strconv.ParseFloat(ad.AdInfo.MaxAmount, 64)
+		maxAmount, _ := strconv.ParseFloat(ad.AdInfo.MaxAmountAvailable, 64)
 		tempPrice, _ := strconv.ParseFloat(ad.AdInfo.TempPrice, 64)
 
 		amount := tempPrice * btcAmount
