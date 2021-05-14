@@ -4,7 +4,7 @@ Localbitcoin rate is a command-line app that searches the best rate from a speci
 
 ## Build
 
-If you want to build the program from the source you need to install [golang](https://golang.org/dl/) version 1.14 first. Then you need to run the follow commands:
+If you want to build the program from the source you need to install [golang](https://golang.org/dl/) version 1.16 first. Then you need to run the follow commands:
 
 ```bash
 $make clean
