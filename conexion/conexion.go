@@ -83,6 +83,10 @@ func getLocalbitcoinResponse(url string) (r entity.LocalbitcoinsResponse, e erro
 
 	dataInBytes, e := getHttpResponse(url)
 
+	if e != nil {
+		return
+	}
+
 	e = json.Unmarshal(dataInBytes, &localbitcoinsResponse)
 	if e != nil {
 		return
@@ -97,10 +101,15 @@ func getLocalbitcoinCurrencieResponse(url string) (r entity.LocalbitcoinsCurrenc
 
 	dataInBytes, e := getHttpResponse(url)
 
+	if e != nil {
+		return
+	}
+
 	e = json.Unmarshal(dataInBytes, &localbitcoinsCurrencieResponse)
 	if e != nil {
 		return
 	}
+
 	r = localbitcoinsCurrencieResponse
 
 	return
