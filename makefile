@@ -5,7 +5,7 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 ZIPCMD=zip
 BINARY_NAME=localbitcoin_rate
-BINARY_VERSION=0.2.3
+BINARY_VERSION=0.2.5
 BUILD_FOLDER=./build
 BUILD_WINDOWS_FOLDER=$(BUILD_FOLDER)/windows
 BUILD_LINUX_FOLDER=$(BUILD_FOLDER)/linux
@@ -23,4 +23,4 @@ test:
 clean: 
 	$(GOCLEAN) 
 	if [ -d $(BUILD_FOLDER) ]; then rm -Rf $(BUILD_FOLDER); fi
-	rm -f $(BINARY_NAME)
+		rm -f $(BINARY_NAME)
