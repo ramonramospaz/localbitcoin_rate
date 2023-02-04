@@ -3,7 +3,7 @@ package entity
 import (
 	"encoding/json"
 	"errors"
-	"io/ioutil"
+	"io"
 	"os"
 	"reflect"
 	"testing"
@@ -57,7 +57,7 @@ func getJSONFromFile() (r LocalbitcoinsResponse, e error) {
 		return
 	}
 	defer jsonFile.Close()
-	jsonData, err := ioutil.ReadAll(jsonFile)
+	jsonData, err := io.ReadAll(jsonFile)
 	if err != nil {
 		e = errors.New("The data from the file localbitcoinsResposeTest.json could not be readed")
 		return
