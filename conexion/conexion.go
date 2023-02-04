@@ -14,8 +14,8 @@ import (
 	"time"
 )
 
-const urlBuy = "https://localbitcoins.com/es/buy-bitcoins-online/%v/.json"
-const urlSell = "https://localbitcoins.com/es/sell-bitcoins-online/%v/.json"
+const urlBuy = "https://localbitcoins.com/buy-bitcoins-online/%v/.json"
+const urlSell = "https://localbitcoins.com/sell-bitcoins-online/%v/.json"
 const urlCoins = "https://localbitcoins.com/api/currencies/"
 
 var listCoins entity.LocalbitcoinsCurrencieResponse
@@ -30,7 +30,7 @@ func getListCoins() {
 	listCoins.Ready = true
 }
 
-//ShowListCoins show the list of all currency that localbitcoin can work with.
+// ShowListCoins show the list of all currency that localbitcoin can work with.
 func ShowListCoins() entity.LocalbitcoinsCurrencieResponse {
 	fmt.Println("Searching the list of currency in the web page localbitcoin. This is going to take some time....")
 	getListCoins()
@@ -118,7 +118,7 @@ func checkLocalbitcoinCoins(coin string) (e error) {
 	return
 }
 
-//GetLocalbitcoinRate ...
+// GetLocalbitcoinRate ...
 func GetLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankNameOut string, amount float64) (response entity.LocalbitcoinRateInformation, err error) {
 	return getLocalbitcoinRate(coinIn, bankNameIn, coinOut, bankNameOut, amount, getLocalbitcoinResponse)
 }

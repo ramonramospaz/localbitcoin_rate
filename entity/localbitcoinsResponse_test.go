@@ -13,7 +13,7 @@ func createDummyDataAdsInfo() (r AdvertisementInformation) {
 
 	r.RequireFeedbackScore = 0
 	r.HiddenByOpeningHours = false
-	r.Currency = "VES"
+	r.Currency = "VED"
 	r.RequireIdentification = true
 	r.IsLocalOffice = false
 	r.FirstTimeLimitBtc = ""

@@ -1,6 +1,6 @@
 module localbitcoin_rate
 
-go 1.16
+go 1.20
 
 require (
 	github.com/alecthomas/kong v0.2.4

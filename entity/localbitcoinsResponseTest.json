@@ -1,7 +1,7 @@
 {
     "pagination": {
-        "prev": "https://localbitcoins.com/es/buy-bitcoins-online/ves/.json?page=1",
-        "next": "https://localbitcoins.com/es/buy-bitcoins-online/ves/.json?page=3"
+        "prev": "https://localbitcoins.com/buy-bitcoins-online/ved/.json?page=1",
+        "next": "https://localbitcoins.com/buy-bitcoins-online/ved/.json?page=3"
     },
     "data": {
         "ad_list": [
@@ -9,7 +9,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -53,7 +53,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -97,7 +97,7 @@
                 "data": {
                     "require_feedback_score": 97,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -141,7 +141,7 @@
                 "data": {
                     "require_feedback_score": 95,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -185,7 +185,7 @@
                 "data": {
                     "require_feedback_score": 99,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -229,7 +229,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -273,7 +273,7 @@
                 "data": {
                     "require_feedback_score": 100,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -317,7 +317,7 @@
                 "data": {
                     "require_feedback_score": 95,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -361,7 +361,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -405,7 +405,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -449,7 +449,7 @@
                 "data": {
                     "require_feedback_score": 99,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "10.00",
@@ -493,7 +493,7 @@
                 "data": {
                     "require_feedback_score": 99,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "2.00",
@@ -537,7 +537,7 @@
                 "data": {
                     "require_feedback_score": 96,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -581,7 +581,7 @@
                 "data": {
                     "require_feedback_score": 98,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -625,7 +625,7 @@
                 "data": {
                     "require_feedback_score": 85,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -669,7 +669,7 @@
                 "data": {
                     "require_feedback_score": 85,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -713,7 +713,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -757,7 +757,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "1.00",
@@ -801,7 +801,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "1.00",
@@ -845,7 +845,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "1.00",
@@ -889,7 +889,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "1.00",
@@ -933,7 +933,7 @@
                 "data": {
                     "require_feedback_score": 98,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -977,7 +977,7 @@
                 "data": {
                     "require_feedback_score": 98,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1021,7 +1021,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1065,7 +1065,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1109,7 +1109,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1153,7 +1153,7 @@
                 "data": {
                     "require_feedback_score": 50,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1197,7 +1197,7 @@
                 "data": {
                     "require_feedback_score": 99,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "0.10",
@@ -1241,7 +1241,7 @@
                 "data": {
                     "require_feedback_score": 10,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1285,7 +1285,7 @@
                 "data": {
                     "require_feedback_score": 85,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1329,7 +1329,7 @@
                 "data": {
                     "require_feedback_score": 50,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1373,7 +1373,7 @@
                 "data": {
                     "require_feedback_score": 1,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1417,7 +1417,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1461,7 +1461,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1505,7 +1505,7 @@
                 "data": {
                     "require_feedback_score": 100,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": "0.50",
@@ -1549,7 +1549,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1593,7 +1593,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1637,7 +1637,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1681,7 +1681,7 @@
                 "data": {
                     "require_feedback_score": 85,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1725,7 +1725,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1769,7 +1769,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1813,7 +1813,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1857,7 +1857,7 @@
                 "data": {
                     "require_feedback_score": 100,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1901,7 +1901,7 @@
                 "data": {
                     "require_feedback_score": 99,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "0.20",
@@ -1945,7 +1945,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -1989,7 +1989,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -2033,7 +2033,7 @@
                 "data": {
                     "require_feedback_score": 30,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -2077,7 +2077,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
@@ -2121,7 +2121,7 @@
                 "data": {
                     "require_feedback_score": 1,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": true,
                     "is_local_office": false,
                     "first_time_limit_btc": "999.99",
@@ -2165,7 +2165,7 @@
                 "data": {
                     "require_feedback_score": 0,
                     "hidden_by_opening_hours": false,
-                    "currency": "VES",
+                    "currency": "VED",
                     "require_identification": false,
                     "is_local_office": false,
                     "first_time_limit_btc": null,
