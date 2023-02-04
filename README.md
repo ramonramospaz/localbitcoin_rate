@@ -42,6 +42,6 @@ localbitcoin_rate search -b PAB -s VED -a 100
 This example search the rate from PAB (Panama Currency) to VED (Venezuelan Currency) from the amount 100$
 ## Example 2:
 ```bash
-localbitcoin_rate search -b PAB -1 Banesco -s VED -2 BOD -a 100
+localbitcoin_rate search -b PAB -1 Mercantil -s VED -2 Mercantil -a 100
 ```
 This example search the rate from PAB (Panama Currency) of the Bank Banesco to VED (Venezuelan Currency) of the Bank BOD from the amount 100$
