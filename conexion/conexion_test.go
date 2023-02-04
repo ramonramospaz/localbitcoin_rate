@@ -3,7 +3,7 @@ package conexion
 import (
 	"encoding/json"
 	"errors"
-	"io/ioutil"
+	"io"
 	"localbitcoin_rate/entity"
 	"os"
 	"strings"
@@ -29,7 +29,7 @@ func getJSONFromFile(filename string) (r entity.LocalbitcoinsResponse, e error) 
 		return
 	}
 	defer jsonFile.Close()
-	jsonData, err := ioutil.ReadAll(jsonFile)
+	jsonData, err := io.ReadAll(jsonFile)
 	if err != nil {
 		e = errors.New("The data from the file localbitcoinsResposeTest.json could not be readed")
 		return
@@ -83,7 +83,7 @@ func TestGetLocalbitcoinCurrencieResponse(t *testing.T) {
 }
 
 func TestGetLocalbitcoinResume(t *testing.T) {
-	response, err := getLocalbitcoinRate("PAB", "Banesco", "VED", "Banesco", 105, getJSONFromFileDummy)
+	response, err := privateGetLocalbitcoinRate("PAB", "Banesco", "VED", "Banesco", 105, getJSONFromFileDummy)
 
 	if err != nil {
 		t.Error(err)
@@ -92,7 +92,7 @@ func TestGetLocalbitcoinResume(t *testing.T) {
 	output, _ := json.MarshalIndent(&response, "", "\t\t")
 	t.Log(string(output))
 
-	response, err = getLocalbitcoinRate("PAB", "Banesco", "VED", "BOD", 50, getJSONFromFileDummy)
+	response, err = privateGetLocalbitcoinRate("PAB", "Banesco", "VED", "BOD", 50, getJSONFromFileDummy)
 
 	if err != nil {
 		t.Error(err)
@@ -101,19 +101,19 @@ func TestGetLocalbitcoinResume(t *testing.T) {
 	output, _ = json.MarshalIndent(&response, "", "\t\t")
 	t.Log(string(output))
 
-	response, err = getLocalbitcoinRate("PAX", "Banesco", "VED", "BOD", 50, getJSONFromFileDummy)
+	response, err = privateGetLocalbitcoinRate("PAX", "Banesco", "VED", "BOD", 50, getJSONFromFileDummy)
 
 	if err == nil {
 		t.Error("The currency PAX dont exist")
 	}
 
-	response, err = getLocalbitcoinRate("PAB", "Banesco", "VED", "PUPIS", 50, getJSONFromFileDummy)
+	response, err = privateGetLocalbitcoinRate("PAB", "Banesco", "VED", "PUPIS", 50, getJSONFromFileDummy)
 
 	if err == nil {
 		t.Error("There is not bank PUPIS")
 	}
 
-	response, err = getLocalbitcoinRate("PAB", "", "VED", "", 50, getJSONFromFileDummy)
+	response, err = privateGetLocalbitcoinRate("PAB", "", "VED", "", 50, getJSONFromFileDummy)
 
 	if err != nil {
 		t.Error(err)
@@ -122,7 +122,7 @@ func TestGetLocalbitcoinResume(t *testing.T) {
 	output, _ = json.MarshalIndent(&response, "", "\t\t")
 	t.Log(string(output))
 
-	response, err = getLocalbitcoinRate("PAB", "", "VED", "", -50, getJSONFromFileDummy)
+	response, err = privateGetLocalbitcoinRate("PAB", "", "VED", "", -50, getJSONFromFileDummy)
 
 	if err == nil {
 		t.Error("There arent adds with negative numbers")
@@ -131,7 +131,7 @@ func TestGetLocalbitcoinResume(t *testing.T) {
 }
 
 func Test1(t *testing.T) {
-	response, err := getLocalbitcoinRate("PAB", "", "VED", "", 50, getLocalbitcoinResponse)
+	response, err := privateGetLocalbitcoinRate("PAB", "", "VED", "", 50, getLocalbitcoinResponse)
 
 	if err != nil {
 		t.Error(err)
