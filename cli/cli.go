@@ -45,13 +45,13 @@ func Cli() {
 
 	switch ctx.Command() {
 	case "currencies":
-		getListCurrencies()
+		showListCurrencies()
 	case "example":
-		getExample()
+		showExample()
 	case "search":
 		getLocalbitcoinRate(c)
 	case "version":
-		getVersion()
+		showVersion()
 	default:
 		panic(ctx.Command())
 	}
@@ -108,7 +108,7 @@ func showInformation(info entity.LocalbitcoinRateInformation) {
 	fmt.Println("")
 }
 
-func getListCurrencies() {
+func showListCurrencies() {
 	listCoins := conexion.ShowListCoins()
 	output, _ := json.MarshalIndent(&listCoins.Data.Currencies, "", "\t\t")
 	fmt.Printf("%v\n", string(output))

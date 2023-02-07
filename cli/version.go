@@ -10,11 +10,11 @@ import (
 // Change the version in the makefile
 var version = "undefined"
 
-func getVersion() {
+func showVersion() {
 	fmt.Printf("Cli app version %v\n", version)
 }
 
-func getExample() {
+func showExample() {
 	appPath, _ := os.Executable()
 	pathSeparator := "/"
 	if runtime.GOOS == "windows" {
