@@ -149,9 +149,10 @@ func getLocalbitcoinBuyAd(coinIn, bankNameIn string, amount float64, getResponse
 
 		if (!findBuyer && localbitcoinsResponseBuy.Pages.Next == "") || (findBuyer) {
 			break
-		} else {
-			localbitcoinsResponseBuy, _ = getResponse(localbitcoinsResponseBuy.Pages.Next)
 		}
+
+		localbitcoinsResponseBuy, _ = getResponse(localbitcoinsResponseBuy.Pages.Next)
+
 	}
 
 	if !findBuyer {
@@ -179,9 +180,10 @@ func getLocalbitcoinSellAd(coinOut, bankNameOut string, BTC float64, getResponse
 
 		if (!findSeller && localbitcoinsResponseSell.Pages.Next == "") || (findSeller) {
 			break
-		} else {
-			localbitcoinsResponseSell, _ = getResponse(localbitcoinsResponseSell.Pages.Next)
 		}
+
+		localbitcoinsResponseSell, _ = getResponse(localbitcoinsResponseSell.Pages.Next)
+
 	}
 
 	if !findSeller {
