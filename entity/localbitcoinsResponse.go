@@ -32,7 +32,7 @@ func (m *MainData) SearchByAmountAndBankFirstMatch(amount float64, bankName stri
 
 		if amount >= minAmount && amount <= maxAmount {
 
-			if (strings.Contains(strings.ToUpper(ad.AdInfo.BankName), strings.ToUpper(bankName)) == true) || (bankName == "") {
+			if (strings.Contains(strings.ToUpper(ad.AdInfo.BankName), strings.ToUpper(bankName))) || (bankName == "") {
 				r = ad
 				return
 			}
@@ -40,7 +40,7 @@ func (m *MainData) SearchByAmountAndBankFirstMatch(amount float64, bankName stri
 		}
 
 	}
-	e = errors.New("The ad was not found")
+	e = errors.New("the ad was not found")
 	return
 }
 
@@ -55,7 +55,7 @@ func (m *MainData) SearchByBTCAndBankFirstMatch(btcAmount float64, bankName stri
 
 		if amount >= minAmount && amount <= maxAmount {
 
-			if (strings.Contains(strings.ToUpper(ad.AdInfo.BankName), strings.ToUpper(bankName)) == true) || (bankName == "") {
+			if (strings.Contains(strings.ToUpper(ad.AdInfo.BankName), strings.ToUpper(bankName))) || (bankName == "") {
 				r = ad
 				return
 			}
@@ -63,7 +63,7 @@ func (m *MainData) SearchByBTCAndBankFirstMatch(btcAmount float64, bankName stri
 		}
 
 	}
-	e = errors.New("The ad was not found")
+	e = errors.New("the ad was not found")
 	return
 }
 

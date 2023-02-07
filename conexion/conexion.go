@@ -42,24 +42,24 @@ func getHttpResponse(url string) (dataInBytes []byte, e error) {
 		Timeout: 30 * time.Second,
 	}
 
-	//Create request
+	// Create request
 	request, e := http.NewRequest("GET", url, http.NoBody)
 
 	if e != nil {
 		return
 	}
-	//Add the header for read compresion
+	// Add the header for read compresion
 
 	request.Header.Add("Accept-Encoding", "gzip")
 
-	//Makr HTTP GET request
+	// Makr HTTP GET request
 	response, e := client.Do(request)
 	if e != nil {
 		return
 	}
 	defer response.Body.Close()
 
-	//Check if the server send compressd data
+	// Check if the server send compressd data
 	var reader io.ReadCloser
 	switch response.Header.Get("Content-Encoding") {
 	case "gzip":
@@ -127,11 +127,11 @@ func checkLocalbitcoinCoins(coin string) (e error) {
 }
 
 // GetLocalbitcoinRate ...
-func GetLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankNameOut string, amount float64) (response entity.LocalbitcoinRateInformation, err error) {
+func GetLocalbitcoinRate(coinIn, bankNameIn, coinOut, bankNameOut string, amount float64) (response entity.LocalbitcoinRateInformation, err error) {
 	return privateGetLocalbitcoinRate(coinIn, bankNameIn, coinOut, bankNameOut, amount, getLocalbitcoinResponse)
 }
 
-func getLocalbitcoinBuyAd(coinIn string, bankNameIn string, amount float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (buyAdvertisement entity.Advertisement, err error) {
+func getLocalbitcoinBuyAd(coinIn, bankNameIn string, amount float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (buyAdvertisement entity.Advertisement, err error) {
 	completeURLBuy := fmt.Sprintf(urlBuy, coinIn)
 	localbitcoinsResponseBuy, err := getResponse(completeURLBuy)
 	if err != nil {
@@ -162,7 +162,7 @@ func getLocalbitcoinBuyAd(coinIn string, bankNameIn string, amount float64, getR
 	return
 }
 
-func getLocalbitcoinSellAd(coinOut string, bankNameOut string, BTC float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (sellAdvertisement entity.Advertisement, err error) {
+func getLocalbitcoinSellAd(coinOut, bankNameOut string, BTC float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (sellAdvertisement entity.Advertisement, err error) {
 	completeURLSell := fmt.Sprintf(urlSell, coinOut)
 	localbitcoinsResponseSell, errURL := getResponse(completeURLSell)
 	if errURL != nil {
@@ -192,7 +192,7 @@ func getLocalbitcoinSellAd(coinOut string, bankNameOut string, BTC float64, getR
 	return
 }
 
-func privateGetLocalbitcoinRate(coinIn string, bankNameIn string, coinOut string, bankNameOut string, amount float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (response entity.LocalbitcoinRateInformation, err error) {
+func privateGetLocalbitcoinRate(coinIn, bankNameIn, coinOut, bankNameOut string, amount float64, getResponse func(url string) (r entity.LocalbitcoinsResponse, e error)) (response entity.LocalbitcoinRateInformation, err error) {
 
 	if amount <= 0 {
 		err = errors.New("the amount cant be 0 or negative")

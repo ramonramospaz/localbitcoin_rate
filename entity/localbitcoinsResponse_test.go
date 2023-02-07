@@ -41,7 +41,7 @@ func createDummyDataAdsInfo() (r AdvertisementInformation) {
 	r.Visible = true
 	r.CreatedAt = "2019-10-21T11:05:37+00:00"
 	r.AtmModel = ""
-	//profile
+	// profile
 	r.AdsProfile.Username = "iliotest"
 	r.AdsProfile.FeedbackScore = 100
 	r.AdsProfile.TradeCount = "3000+"
@@ -100,7 +100,7 @@ func TestSearchFunctionByAmountOfMoney(t *testing.T) {
 		t.Error(err)
 	}
 
-	//First search
+	// First search
 	response, err := localbitcoinsResponse.Data.SearchByAmountAndBankFirstMatch(400000, "BaNeScO")
 	if err != nil {
 		t.Error(err)
@@ -112,7 +112,7 @@ func TestSearchFunctionByAmountOfMoney(t *testing.T) {
 		t.Errorf(errorText, adIDtest1, response.AdInfo.AdID)
 	}
 
-	//Second search
+	// Second search
 	response, err = localbitcoinsResponse.Data.SearchByAmountAndBankFirstMatch(100, "")
 	if err != nil {
 		t.Error(err)
@@ -124,7 +124,7 @@ func TestSearchFunctionByAmountOfMoney(t *testing.T) {
 		t.Errorf(errorText, adIDtest2, response.AdInfo.AdID)
 	}
 
-	//Last search
+	// Last search
 	_, err = localbitcoinsResponse.Data.SearchByAmountAndBankFirstMatch(100, "BOD")
 	if err == nil {
 		t.Error("It supossed that the item could be find")
@@ -140,7 +140,7 @@ func TestSearchFunctionByAmountOfBTC(t *testing.T) {
 		t.Error(err)
 	}
 
-	//First search
+	// First search
 	response, err := localbitcoinsResponse.Data.SearchByBTCAndBankFirstMatch(0.0007141103746847872, "BaNeScO")
 	if err != nil {
 		t.Error(err)
@@ -153,7 +153,7 @@ func TestSearchFunctionByAmountOfBTC(t *testing.T) {
 		t.Errorf(errorText, adIDtest1, response.AdInfo.AdID)
 	}
 
-	//Second search
+	// Second search
 	response, err = localbitcoinsResponse.Data.SearchByBTCAndBankFirstMatch(1.7798656166588295e-07, "")
 	if err != nil {
 		t.Error(err)

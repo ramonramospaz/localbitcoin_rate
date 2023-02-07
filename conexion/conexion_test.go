@@ -51,9 +51,9 @@ func TestGetLocalbitcoinResponse(t *testing.T) {
 		t.Error(err)
 	}
 
-	//Descoment if you want to see the output
-	//output, _ := json.MarshalIndent(&response, "", "\t\t")
-	//t.Log(string(output))
+	// Descoment if you want to see the output
+	// output, _ := json.MarshalIndent(&response, "", "\t\t")
+	// t.Log(string(output))
 }
 
 func BenchmarkGetLocalbitcoinResponse(b *testing.B) {
@@ -77,9 +77,9 @@ func TestGetLocalbitcoinCurrencieResponse(t *testing.T) {
 		t.Error("There are not currency code active, please check localbitcoin")
 	}
 
-	//Descoment if you want to see the output
-	//output, _ := json.MarshalIndent(&response, "", "\t\t")
-	//t.Log(string(output))
+	// Descoment if you want to see the output
+	// output, _ := json.MarshalIndent(&response, "", "\t\t")
+	// t.Log(string(output))
 }
 
 func TestGetLocalbitcoinResume(t *testing.T) {
