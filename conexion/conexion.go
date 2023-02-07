@@ -19,7 +19,7 @@ const urlCoins = "https://localbitcoins.com/api/currencies/"
 
 var listCoins entity.LocalbitcoinsCurrencieResponse
 
-func showListCoins() {
+func privateShowListCoins() {
 	r, err := getLocalbitcoinCurrencieResponse(urlCoins)
 	if err != nil {
 		fmt.Printf("There was a problem with the internet conection: %v\n", err)
@@ -32,7 +32,7 @@ func showListCoins() {
 // ShowListCoins show the list of all currency that localbitcoin can work with.
 func ShowListCoins() entity.LocalbitcoinsCurrencieResponse {
 	fmt.Println("Searching the list of currency in the web page localbitcoin. This is going to take some time....")
-	showListCoins()
+	privateShowListCoins()
 	return listCoins
 }
 
@@ -117,7 +117,7 @@ func getLocalbitcoinCurrencieResponse(url string) (r entity.LocalbitcoinsCurrenc
 func checkLocalbitcoinCoins(coin string) (e error) {
 
 	if !listCoins.Ready {
-		showListCoins()
+		privateShowListCoins()
 	}
 
 	if _, ok := listCoins.Data.Currencies[coin]; !ok {
