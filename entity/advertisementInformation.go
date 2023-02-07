@@ -63,7 +63,7 @@ type Profile struct {
 }
 
 // GetLocalbitcoinResume ...
-func GetLocalbitcoinResume(amount float64, buy Advertisement, sell Advertisement) (r LocalbitcoinRateInformation, e error) {
+func GetLocalbitcoinResume(amount float64, buy, sell Advertisement) (r LocalbitcoinRateInformation, e error) {
 	r.CurrencyBuy = buy.AdInfo.Currency
 	r.BankNameBuy = buy.AdInfo.BankName
 	r.AmountBuy = amount
